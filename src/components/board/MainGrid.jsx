@@ -37,6 +37,7 @@ export default ()=>{
     //for PC
     
     const handleKeyDown = (event) => {
+      event.preventDefault();
         switch (event.key) {
           case 'ArrowRight':
             console.log("moved right");
@@ -77,10 +78,10 @@ export default ()=>{
     };
 
     const handleTouchMove = (event) => {
+      event.preventDefault();
         if (initialTouchX === null || initialTouchY === null) {
             return;
         }
-        event.preventDefault();
         const currentTouchX = event.touches[0].clientX;
     const currentTouchY = event.touches[0].clientY;
 
