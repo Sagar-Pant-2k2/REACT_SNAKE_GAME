@@ -17,7 +17,7 @@ export default ()=>{
   useEffect(() => {
     const interval = setInterval(() => {
       setTime((prevTime) => prevTime + 1);
-    }, 500 - 5*gameState.score);
+    }, (100>(500 - 5*gameState.score)?100:(500 - 5*gameState.score)));
    
     dispatch({type:"MOVE"});
     return () => {
@@ -80,6 +80,7 @@ export default ()=>{
         if (initialTouchX === null || initialTouchY === null) {
             return;
         }
+        event.preventDefault();
         const currentTouchX = event.touches[0].clientX;
     const currentTouchY = event.touches[0].clientY;
 

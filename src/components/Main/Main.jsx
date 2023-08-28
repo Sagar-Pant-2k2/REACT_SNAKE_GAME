@@ -2,8 +2,10 @@ import styled from 'styled-components'
 import MainGrid from '../board/MainGrid'
 import { useContext, useEffect } from 'react';
 import { SnakeGameContext } from '../../context/GameContext';
+
 const Main = styled.div`
     width: 100vw;
+    
     min-height:100vh;
     background-color: aliceblue;
     display: flex;
@@ -17,6 +19,7 @@ export default ()=>{
 
     return  (
         <Main>
+            
             <h1>Score :  {gameState.score}</h1>
             <MainGrid/>
         </Main>
