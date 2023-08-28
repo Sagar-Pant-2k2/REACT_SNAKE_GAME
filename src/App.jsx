@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import Main from "./components/Main/Main";
 import {SnakeGameContextProvider} from './context/GameContext';
+
 const App = ()=>{
   return (
     <SnakeGameContextProvider>

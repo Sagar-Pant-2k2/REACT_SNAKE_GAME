@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import MainGrid from '../board/MainGrid'
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { SnakeGameContext } from '../../context/GameContext';
 const Main = styled.div`
     width: 100vw;
@@ -14,6 +14,7 @@ const Main = styled.div`
 
 export default ()=>{
     const {gameState} = useContext(SnakeGameContext);
+
     return  (
         <Main>
             <h1>Score :  {gameState.score}</h1>

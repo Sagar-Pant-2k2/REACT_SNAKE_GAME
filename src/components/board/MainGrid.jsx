@@ -37,8 +37,7 @@ export default ()=>{
     
     // console.log("
     return (
-    <Container onKeyDown={(key)=>{console.log("key Pressed")}}>
-        
+    <Container>
         {Cells}
     </Container>
     );
