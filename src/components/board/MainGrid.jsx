@@ -28,7 +28,9 @@ export default ()=>{
     const Cells = Array(100).fill('').map((_,index)=>{
     return (
     <Cell key={index} index={index}>
+        
         {gameState.snake.includes(index) && <Snake/>}
+        {gameState.snake[0]!=gameState.foodPosition && gameState.foodPosition==index && <Food/>}
     </Cell>);
     });
 
@@ -36,6 +38,7 @@ export default ()=>{
     // console.log("
     return (
     <Container onKeyDown={(key)=>{console.log("key Pressed")}}>
+        
         {Cells}
     </Container>
     );
