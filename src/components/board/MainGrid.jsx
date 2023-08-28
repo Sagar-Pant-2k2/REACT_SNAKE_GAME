@@ -86,7 +86,7 @@ export default ()=>{
     const diffX = currentTouchX - initialTouchX;
     const diffY = currentTouchY - initialTouchY;
 
-    const threshold = 20;
+    const threshold = 2;
 
     if (Math.abs(diffX) > Math.abs(diffY)) {
       // Horizontal swipe
