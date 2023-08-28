@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 
 const initialState = {
+    dead:0,
     snake: [0],
     foodPosition:5,
     direction : 'Right',
@@ -44,7 +45,10 @@ const handleMoveSnake = (state,action)=>{
                 newSnakePosition-=10;
                 if(newSnakePosition<0) newSnakePosition+=100; 
             }        
-        
+            
+            if(state.snake.includes(newSnakePosition))  {
+                return { ...state,dead:true, snake: [newSnakePosition,...state.snake.slice(0,-1)] };
+            }
             if(newSnakePosition===state.foodPosition) {
                 const max_val = 99;
 

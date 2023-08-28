@@ -9,7 +9,7 @@ export default ()=>{
     const {gameState,dispatch} = useContext(SnakeGameContext);
 
     const [time, setTime] = useState(0);
-
+{!gameState.dead && 
   useEffect(() => {
     const interval = setInterval(() => {
       setTime((prevTime) => prevTime + 1);
@@ -19,7 +19,7 @@ export default ()=>{
     return () => {
       clearInterval(interval);
     };
-  }, [time]);
+  }, [time]);}
     
     const ChangeDirection = (e)=>{
         dispatch({type:'CHANGE_DIRECTION',payload:{direction:`${e.key}`}});
