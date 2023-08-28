@@ -9,6 +9,10 @@ export default ()=>{
     const {gameState,dispatch} = useContext(SnakeGameContext);
 
     const [time, setTime] = useState(0);
+    // console.log("dead",gameState.dead);
+
+    //why ain't dead working
+    
 {!gameState.dead && 
   useEffect(() => {
     const interval = setInterval(() => {

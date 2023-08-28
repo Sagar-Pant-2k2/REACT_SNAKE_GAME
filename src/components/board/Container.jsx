@@ -7,5 +7,10 @@ const Container = styled.div`
     border: 2px solid black;
     height: 500px;
     width: 500px;
+    @media (max-width: 500px) {
+        padding: 10px;
+        width: 300px;
+        height: 300px;
+    }
 `
 export default Container;
