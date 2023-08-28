@@ -10,13 +10,14 @@ const initialState = {
 
 const handleChangeDirection = (state, action) => {
     const newDirection = action.payload.direction;
-
-    if ( state.snake.len===1 || 
+    if(state.snake.len==1) return {...state,direction:newDirection};
+    if ( 
       (newDirection === 'Right' && state.direction !== 'Left') ||
       (newDirection === 'Left' && state.direction !== 'Right') ||
       (newDirection === 'Up' && state.direction !== 'Down') ||
       (newDirection === 'Down' && state.direction !== 'Up')
     ) {
+        console.log("newdirection", newDirection);
       return { ...state, direction: newDirection };
     }
   
@@ -25,17 +26,16 @@ const handleChangeDirection = (state, action) => {
   
 
 const handleMoveSnake = (state,action)=>{
-    let newSnakePosition = state.snake[0];
-
+            let newSnakePosition = state.snake[0];
             if(state.direction==='Right') {
-                newSnakePosition = Math.floor(newSnakePosition/10) + (newSnakePosition+1)%10;
+                newSnakePosition++;
+                if(newSnakePosition%10==0) {
+                    newSnakePosition-=10;
+                }
+                
             }
             if(state.direction==='Left') {
-                let temp = Math.floor(newSnakePosition/10)+10;
-                newSnakePosition-=1;
-                if(newSnakePosition<0) {
-                    newSnakePosition += temp;
-                }
+                newSnakePosition--; 
             }
             if(state.direction==='Down') { 
                 newSnakePosition+=10;
@@ -44,7 +44,8 @@ const handleMoveSnake = (state,action)=>{
             if(state.direction==='Up') { 
                 newSnakePosition-=10;
                 if(newSnakePosition<0) newSnakePosition+=100; 
-            }        
+            }  
+            console.log(state.snake[0]," to ",newSnakePosition);      
             
             if(state.snake.includes(newSnakePosition))  {
                 return { ...state,dead:true, snake: [newSnakePosition,...state.snake.slice(0,-1)] };
@@ -73,9 +74,6 @@ const GameReducer = (state,action)=>{
             return handleMoveSnake(state,action);          
         case 'CHANGE_DIRECTION':
             return handleChangeDirection(state,action);
-
-
-
         default:
             return state;
     }
