@@ -12,7 +12,7 @@ export default ()=>{
     // console.log("dead",gameState.dead);
 
     //why ain't dead working
-    
+
 {!gameState.dead && 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -34,6 +34,7 @@ export default ()=>{
     </Cell>);
     });
 
+    //for PC
     
     const handleKeyDown = (event) => {
         switch (event.key) {
@@ -66,6 +67,56 @@ export default ()=>{
           window.removeEventListener('keydown', handleKeyDown);
         };
       }, []);
+
+    let initialTouchX = null;
+    let initialTouchY = null;
+
+    const handleTouchStart = (event) => {
+        initialTouchX = event.touches[0].clientX;
+        initialTouchY = event.touches[0].clientY;
+    };
+
+    const handleTouchMove = (event) => {
+        if (initialTouchX === null || initialTouchY === null) {
+            return;
+        }
+        const currentTouchX = event.touches[0].clientX;
+    const currentTouchY = event.touches[0].clientY;
+
+    const diffX = currentTouchX - initialTouchX;
+    const diffY = currentTouchY - initialTouchY;
+
+    const threshold = 20;
+
+    if (Math.abs(diffX) > Math.abs(diffY)) {
+      // Horizontal swipe
+      if (diffX > threshold) {
+        dispatch({ type: 'CHANGE_DIRECTION', payload: { direction: 'Right' } });
+      } else if (diffX < -threshold) {
+        dispatch({ type: 'CHANGE_DIRECTION', payload: { direction: 'Left' } });
+      }
+    } else {
+      // Vertical swipe
+      if (diffY > threshold) {
+        dispatch({ type: 'CHANGE_DIRECTION', payload: { direction: 'Down' } });
+      } else if (diffY < -threshold) {
+        dispatch({ type: 'CHANGE_DIRECTION', payload: { direction: 'Up' } });
+      }
+    }
+        initialTouchX = null;
+        initialTouchY = null;
+    };
+
+      //for touch devices
+    useEffect(()=>{
+        window.addEventListener('touchstart', handleTouchStart);
+        window.addEventListener('touchmove', handleTouchMove);
+
+        return ()=>{
+            window.removeEventListener('touchstart', handleTouchStart);
+            window.removeEventListener('touchmove', handleTouchMove);
+        };
+    },[]);
 
     // console.log("
     return (
