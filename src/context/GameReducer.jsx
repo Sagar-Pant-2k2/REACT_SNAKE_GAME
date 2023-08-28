@@ -4,7 +4,29 @@ const initialState = {
     direction : 'Right'
 }
 
-const moveSnake = ()=>{
+const moveSnake = (state,action)=>{
+    let newSnakePosition = state.snake[0];
+
+            if(state.direction==='Right') {
+                newSnakePosition = Math.floor(newSnakePosition/10) + (newSnakePosition+1)%10;
+            }
+            if(state.direction==='Left') {
+                let temp = Math.floor(newSnakePosition/10)+10;
+                newSnakePosition-=1;
+                if(newSnakePosition<0) {
+                    newSnakePosition += temp;
+                }
+            }
+            if(state.direction==='Down') { 
+                newSnakePosition+=10;
+                newSnakePosition%=100;  
+            }
+            if(state.direction==='Up') { 
+                newSnakePosition-=10;
+                if(newSnakePosition<0) newSnakePosition+=100; 
+            }        
+            // console.log(newSnakePosition);
+            return { ...state, snake: [newSnakePosition,...state.snake.slice(0,-1)] };
 
 }
 
@@ -16,12 +38,8 @@ const eatFood = ()=>{
 const GameReducer = (state,action)=>{
     switch(action.type) {
         case 'MOVE':
-            let newSnakePosition = state.snake[0];
-            newSnakePosition += state.direction==='Right'?1:0; 
-            newSnakePosition +=  state.direction==='Left'?-1:0;
-            newSnakePosition +=  10*(state.direction==='Down'?1:0);
-            newSnakePosition += 10*(state.direction==='Up'?-1:0);
-            return { ...state, snake: [newSnakePosition,...state.snake.slice(0,-1)] }; 
+            return moveSnake(state,action);
+             
         case 'CHANGE_DIRECTION':
             let direction = action.payload.direction;
             let newDirection = state.direction;
@@ -43,7 +61,7 @@ const GameReducer = (state,action)=>{
                     break;
             }
 
-            console.log(newDirection);
+            // console.log(newDirection);
             return { ...state, direction: newDirection };
 
 
