@@ -36,6 +36,7 @@ const handleMoveSnake = (state,action)=>{
             }
             if(state.direction==='Left') {
                 newSnakePosition--; 
+                if(newSnakePosition%10==9) newSnakePosition+=10;
             }
             if(state.direction==='Down') { 
                 newSnakePosition+=10;

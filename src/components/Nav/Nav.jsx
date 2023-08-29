@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-
+import { Link } from 'react-router-dom'
 const Nav = styled.div`
 width:100vw;
 height:40px;
@@ -26,7 +26,7 @@ const Left = styled.div`
 export default ()=>{
     return(
     <Nav>
-        <Left style={{cursor:"pointer"}}>SNAKE_GAME</Left>
-        <Right><span style={{cursor:"pointer"}}>RANKING</span></Right>
+        <Left style={{cursor:"pointer"}}><Link to="/game">SNAKE_GAME</Link></Left>
+        <Right><span style={{cursor:"pointer"}}><Link to={"/ranklist"}>RANKING</Link></span></Right>
     </Nav>)
 }

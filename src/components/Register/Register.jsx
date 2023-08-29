@@ -21,19 +21,17 @@ const Container = styled.div`
 `
 export default () =>{
     return (
-        <Main>
-            <Container>
-                <h2>Enter your name</h2>
-                <form>
-                    <div style={{margin:"10px"}}>
-                    <TextField label="UserName" required/>
-                    </div>
-                    
-                    
-                    <Button>Play</Button>
-                </form>
+        <h1>What the fuck</h1>
+            // <Container>
+            //     <h2>Enter your name</h2>
+            //     <form>
+            //         <div style={{margin:"10px"}}>
+            //         <TextField label="UserName" required/>
+            //         </div>
+            //         <Button>Play</Button>
+            //     </form>
                 
-            </Container>
-        </Main>
+            // </Container>
+        
     )
 }
