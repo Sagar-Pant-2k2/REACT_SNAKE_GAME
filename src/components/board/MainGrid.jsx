@@ -12,14 +12,20 @@ export default ()=>{
     // console.log("dead",gameState.dead);
 
     //why ain't dead working
-
+  let interval;
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    
+    if(gameState.dead) {
+      clearInterval(interval);
+      return;
+    }
+
+     interval = setInterval(() => {
       setTime((prevTime) => prevTime + 1);
     }, (100>(500 - 5*gameState.score)?100:(500 - 5*gameState.score)));
-   
     dispatch({type:"MOVE"});
+    
     return () => {
       clearInterval(interval);
     };

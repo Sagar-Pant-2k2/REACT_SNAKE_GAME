@@ -14,7 +14,7 @@ const App = ()=>{
       <BrowserRouter>
       <Nav/>
         <Routes>
-          <Route path="register" element={<Register/>}></Route>
+          <Route path="/" element={<Register/>}></Route>
           <Route path="/game" element={<Main></Main>}></Route>
           <Route path="/ranklist" element={<RankList/>}></Route>
         </Routes>

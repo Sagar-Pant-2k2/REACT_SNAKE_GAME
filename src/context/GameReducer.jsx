@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 
 const initialState = {
-    dead:0,
+    userName: "",
+    dead:false,
     snake: [0],
     foodPosition:5,
     direction : 'Right',
@@ -75,6 +76,8 @@ const GameReducer = (state,action)=>{
             return handleMoveSnake(state,action);          
         case 'CHANGE_DIRECTION':
             return handleChangeDirection(state,action);
+        case 'REGISTER':
+            return {...state,userName:action.payload.uName};
         default:
             return state;
     }
