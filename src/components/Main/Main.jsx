@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import MainGrid from '../board/MainGrid'
 import { useContext, useEffect } from 'react';
 import { SnakeGameContext } from '../../context/GameContext';
+import { Button } from '@mui/material';
 
 const Main = styled.div`
     width: 100vw;
@@ -15,13 +16,14 @@ const Main = styled.div`
 `
 
 export default ()=>{
-    const {gameState} = useContext(SnakeGameContext);
+    const {gameState,dispatch} = useContext(SnakeGameContext);
 
     return  (
         <Main>
-            
+            {gameState.dead && <h1>Dead</h1>}
             <h1>Score :  {gameState.score}</h1>
             <MainGrid/>
+            {gameState.dead && <Button onClick={()=>dispatch({type:'REPLAY'})} sx={{bgcolor:"blue",margin:"10px",color:"White"}}>Play Again</Button>}
         </Main>
     )
 };

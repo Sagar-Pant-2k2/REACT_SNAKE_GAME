@@ -29,7 +29,7 @@ export default ()=>{
     return () => {
       clearInterval(interval);
     };
-  }, [time]);
+  }, [time,gameState.dead]);
     
 
     const Cells = Array(100).fill('').map((_,index)=>{

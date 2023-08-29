@@ -9,6 +9,16 @@ width: 300px;
   margin: 2rem auto;
 `;
 
+const Main = styled.div`
+    width: 100vw;
+    
+    min-height:100vh;
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+`
 const Title = styled.h2`
   font-size: 1.5rem;
   margin-bottom: 1rem;
@@ -27,6 +37,8 @@ const UserItem = styled.li`
 const RankList = () => {
     const users = userData;
   return (
+    <Main>
+
     <RankListContainer>
       <Title>Ranklist</Title>
       <UserList>
@@ -41,6 +53,7 @@ const RankList = () => {
         ))}
       </UserList>
     </RankListContainer>
+    </Main>
   );
 };
 

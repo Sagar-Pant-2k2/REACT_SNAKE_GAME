@@ -78,6 +78,8 @@ const GameReducer = (state,action)=>{
             return handleChangeDirection(state,action);
         case 'REGISTER':
             return {...state,userName:action.payload.uName};
+        case 'REPLAY':
+            return {...initialState,userName:state.userName};
         default:
             return state;
     }
