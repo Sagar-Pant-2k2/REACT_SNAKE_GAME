@@ -1,17 +1,22 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import Main from "./components/Main/Main";
 import {SnakeGameContextProvider,SnakeGameContext} from './context/GameContext';
 import Nav from "./components/Nav/Nav";
 import Register from "./components/Register/Register"; 
 import RankList from "./components/ranking/Ranking";
-import { BrowserRouter,Routes,Route, redirect} from 'react-router-dom';
+import { BrowserRouter,Routes,Route, redirect, useNavigate} from 'react-router-dom';
 
 
 const App = ()=>{
+  const navigate = useNavigate();
   const {gameState} = useContext(SnakeGameContext);
+  useEffect(()=>{
+    if(gameState.userName==="") navigate("/");
+  },[]);
+  
   return (
     
-      <BrowserRouter>
+      <>
       <Nav/>
         <Routes>
           <Route path="/" element={<Register/>}></Route>
@@ -20,8 +25,7 @@ const App = ()=>{
           
           <Route path="/ranklist" element={<RankList/>}></Route>
         </Routes>
-     
-      </BrowserRouter>
+      </>
    
   );
 }
@@ -29,7 +33,9 @@ const App = ()=>{
 export default ()=>{
   return (
     <SnakeGameContextProvider>
+      <BrowserRouter>
     <App></App>
+      </BrowserRouter>
   </SnakeGameContextProvider>
   );
   
