@@ -18,6 +18,24 @@ export default ()=>{
     
     if(gameState.dead) {
       clearInterval(interval);
+      const save = async ()=>{
+          try {
+            const res = await fetch('https://snakegame-fc398-default-rtdb.firebaseio.com/ranklist.json',{
+              method:"POST",
+              headers:{
+                'Content-Type':"application/json",
+              },
+              body: JSON.stringify({
+                name:gameState.userName,
+                score:gameState.score
+              })
+            });
+          }
+          catch(err) {
+            console.log(err);
+          }
+      }
+      save();
       return;
     }
 

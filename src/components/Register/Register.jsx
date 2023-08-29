@@ -27,7 +27,7 @@ export default () =>{
     const {gameState,dispatch} = useContext(SnakeGameContext);
     const handleRegister = ()=>{
         if(name==="") { alert("username can't be empty"); return;}
-        dispatch({type:"register",payload:{uName:name}});
+        dispatch({type:"REGISTER",payload:{uName:name}});
         navigate('/game');
     }
     return (
