@@ -8,7 +8,6 @@ import { BrowserRouter,Routes,Route} from 'react-router-dom';
 
 
 const App = ()=>{
-  
   return (
     <SnakeGameContextProvider>
       <BrowserRouter>
@@ -18,9 +17,6 @@ const App = ()=>{
           <Route path="/game" element={<Main></Main>}></Route>
           <Route path="/ranklist" element={<RankList/>}></Route>
         </Routes>
-      
-      
-      
      
       </BrowserRouter>
     </SnakeGameContextProvider>
