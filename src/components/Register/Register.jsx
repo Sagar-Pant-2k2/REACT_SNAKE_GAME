@@ -23,16 +23,14 @@ export default () =>{
     return (
         <Main>
             <Container>
-                <h2>Register</h2>
+                <h2>Enter your name</h2>
                 <form>
                     <div style={{margin:"10px"}}>
                     <TextField label="UserName" required/>
                     </div>
-                    <div style={{margin:"10px"}}>
-                    <TextField label="Password" required/>
-                    </div>
                     
-                    <Button>Register</Button>
+                    
+                    <Button>Play</Button>
                 </form>
                 
             </Container>

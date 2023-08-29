@@ -13,7 +13,7 @@ export default ()=>{
 
     //why ain't dead working
 
-{!gameState.dead && 
+
   useEffect(() => {
     const interval = setInterval(() => {
       setTime((prevTime) => prevTime + 1);
@@ -23,7 +23,7 @@ export default ()=>{
     return () => {
       clearInterval(interval);
     };
-  }, [time]);}
+  }, [time]);
     
 
     const Cells = Array(100).fill('').map((_,index)=>{
